@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Les formations
+{% endblock %}
+
+{% block body %}
+    <div class="bg-light p-3">
+        <h1>Liste des formations</h1>
+    </div>
+
+    <div class="row">
+        {% for formations in formations %}
+            <div class="col-4 mt-4">
+                <div class="border border-dark rounded p-2 clearfix">
+                    <h2>
+                        {{ formations.nom }}
+                        -
+                        {{ formations.contenu }}
+
+                        -
+                        {{ formations.modeDeFormation }}
+
+                    </h2>
+
+                    <hr>
+                    <a href="{{ path('cart_add', { 'id': formations.id}) }}" class="btn btn-success">ajouter au panier</a>
+                </div>
+
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
