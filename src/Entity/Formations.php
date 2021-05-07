@@ -42,11 +42,17 @@ class Formations
      */
     private $prerequis;
 
+    /**
+     * @ORM\Column(type="float", nullable=true)
+     */
+    private $prix;
+
+
+
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="float")
      */
-    private $modeDeFormation;
 
     public function getId(): ?int
     {
@@ -113,17 +119,23 @@ class Formations
         return $this;
     }
 
-
-
-    public function getModeDeFormation(): ?string
+    public function getPrix(): ?float
     {
-        return $this->modeDeFormation;
+        return $this->prix;
     }
 
-    public function setModeDeFormation(string $modeDeFormation): self
+    public function setPrix(?float $prix): self
     {
-        $this->modeDeFormation = $modeDeFormation;
+        $this->prix = $prix;
 
         return $this;
     }
+
+
+
+
+
+
+
+
 }

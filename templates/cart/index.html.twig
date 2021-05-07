@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello CartController!
+{% block title %} paiment
 {% endblock %}
 
 {% block body %}
@@ -9,38 +9,60 @@
         <h1>Votre panier</h1>
     </div>
 
-    {% if items | length >0 %}
         <table class="table" >
             <thead>
             <tr>
                 <th>formation</th>
+                <th>prix</th>
                 <th>quantité</th>
                 <th>total</th>
+                <th>action</th>
+
+
+
 
 
             </tr>
 
             </thead>
             <tbody>
-            {% for item in items %}
+            {% for element in panierWithData %}
                 <tr>
-                    <td>{{  item.formations.nom}} </td>
-                    <td>{{  item.quantity}} </td>
-                    <td>{{ item.quantity }}</td>
-                    <td><a
-                                href="#" class="btn btn-danger btn-sm">
-                            <i class="fas fa-trash"> </i>
-                        </a> </td>
+                    <td>{{  element.formations.nom}} </td>
+                    <td>{{  element.formations.prix}} euro</td>
+                    <td>{{ element.quantity }}</td>
+                    <td>{{ element.quantity *element.formations.prix }} euro</td>
+                    <td>
+                         <a href ="{{ path("cart_add",{id:element.formations.id}) }}" class="btn btn-success"><i class="bi bi-cart-plus"></i>
+                         </a>
+                        <a href="{{ path("cart_remove",{id:element.formations.id}) }}" class="btn btn-warning"> <i class="bi bi-cart-dash"></i></a>
+
+                        <a href="{{ path("cart_delette",{id:element.formations.id}) }}" class="btn btn-danger"> <i class="bi bi-cart-x"></i></a>
+
+
+                    </td>
 
                 </tr>
-
+            {% else %}
+                <tr>
+                <td colspan="5" class ="text-center">votre panier est vide</td>
+                </tr>
             {% endfor %}
             </tbody>
-        </table>
-    {% else %}
-        <p>Surprise, c'est vide !</p>
+            <tfoot>
+            <tr>
+                <td colspan="3">Total</td>
+                <td class="text-end">{{ total }}</td>
+                <td>
+                    <a href="{{ path("cart_delette_all") }}" class="btn btn-danger"> <i class="bi bi-cart-x"></i></a>
+                </td>
+            </tr>
+            </tfoot>
 
-    {% endif %}
+
+        </table>
+
+
 
     <a href ="{{ path('proceder_paiment') }}">proceder au paiment</a>
 

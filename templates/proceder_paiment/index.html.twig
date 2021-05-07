@@ -1,12 +1,12 @@
 {% extends 'formation/index.html.twig' %}
 
-{% block title %}Hello CartController!
+{% block title %}Proceder au paiment
 {% endblock %}
 
 {% block body %}
 
     <div class="bg-light p-3">
-        <h1>proceder au paiment </h1>
+        <h1> Paiment</h1>
     </div>
 
 
@@ -16,9 +16,9 @@
             <thead>
             <tr>
                 <th>formation</th>
+                <th>prix</th>
                 <th>quantité</th>
                 <th>total</th>
-
 
             </tr>
 
@@ -26,9 +26,11 @@
             <tbody>
             {% for item in items %}
                 <tr>
+
                     <td>{{  item.formations.nom}} </td>
-                    <td>{{  item.quantity}} </td>
+                    <td>{{  item.formations.prix}} euro</td>
                     <td>{{ item.quantity }}</td>
+                    <td>{{ item.quantity *item.formations.prix }} euro</td>
                     <td><a
                                 href="#" class="btn btn-danger btn-sm">
                             <i class="fas fa-trash"> </i>
@@ -40,7 +42,7 @@
             </tbody>
         </table>
     {% else %}
-        <p>Surprise, c'est vide !</p>
+        <p>votre panier est vide</p>
 
     {% endif %}
 
