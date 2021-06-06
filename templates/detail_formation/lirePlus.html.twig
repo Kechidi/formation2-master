@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Les formations
+{% endblock %}
+
+{% block body %}
+
+
+
+    <div class="bg-light p-3">
+        <h1>Liste des formations</h1>
+    </div>
+
+    <div class="row">
+        {% for formations in formations     %}
+            <div class="col-4 mt-4">
+                <div class="border border-dark rounded p-2 clearfix">
+
+                    <h2> nom:   {{ formations.nom }}</h2>
+                    -
+                    <h2>contenu : {{ formations.contenu }}  </h2>
+
+                    -
+                    -
+                    <h2> objectif  : {{ formations.objectif }} </h2>
+                    -
+                    <h2> public  : {{ formations.public }} </h2>
+                    -
+                    <h2> prerequis : {{ formations.prerequis}} </h2>
+                    -
+                    <h2> prix  : {{ formations.prix }} euro </h2>
+
+
+
+                    <hr>
+                    <a href="{{ path('cart_add', { 'id': formations.id}) }}" class="btn btn-success">ajouter au panier</a>
+<a href=""    >devis</a>
+                </div>
+
+            </div>
+        {% endfor %}
+
+    </div>
+    {{ form_start(form) }}
+    {{ form_label(form.mode) }}
+    {{ form_widget(form.mode)}}
+
+
+    {{ form_rest(form) }}
+
+    {{ form_end(form) }}
+
+
+
+{% endblock %}
