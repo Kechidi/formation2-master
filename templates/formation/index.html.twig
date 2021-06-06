@@ -12,21 +12,32 @@
         {% for formations in formations %}
             <div class="col-4 mt-4">
                 <div class="border border-dark rounded p-2 clearfix">
-                    <h2>
-                        {{ formations.nom }}
+
+                    <h2> nom:   {{ formations.nom }}</h2>
                         -
-                        {{ formations.contenu }}
+
 
                         -
-                        {{ formations.prix }} euro
 
-                    </h2>
+
+                    <h2> prix  : {{ formations.prix }} euro</h2>
+
+
+
+
+
 
                     <hr>
-                    <a href="{{ path('cart_add', { 'id': formations.id}) }}" class="btn btn-success">ajouter au panier</a>
+
+                    <a href="{{ path('detail_formation')}}" class="btn btn-success">pour plus d'informations</a>
+                    <a href="{{ path('create')}}" class="btn btn-success">créer</a>
+
+                    <a href="{{ path('delete', { 'id': formations.id}) }}" class="btn btn-success">supprimer</a>
+                    <a href="{{ path('update', { 'id': formations.id}) }}" class="btn btn-success">modifier</a>
                 </div>
 
             </div>
         {% endfor %}
     </div>
+
 {% endblock %}

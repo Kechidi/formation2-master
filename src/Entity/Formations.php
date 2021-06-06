@@ -50,10 +50,6 @@ class Formations
 
 
 
-    /**
-     * @ORM\Column(type="float")
-     */
-
     public function getId(): ?int
     {
         return $this->id;
